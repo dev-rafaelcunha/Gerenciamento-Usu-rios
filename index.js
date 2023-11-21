@@ -3,8 +3,9 @@ var user = {};
 
 function addLine(dataUser) {
 
-    var tr = document.createElement('tr');
-    tr.innerHTML = `
+    console.log(dataUser);
+
+    document.getElementById('table-users').innerHTML = `
         <tr>
             <td><img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm"></td>
             <td>${dataUser.name}</td>
@@ -16,13 +17,10 @@ function addLine(dataUser) {
                 <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
             </td>
         </tr>
-    `
-
-    document.getElementById('table-users').appendChild(tr);
-
+    `;
 }
 
-document.getElementById('form-user-create').addEventListener('submit', function (event) {
+document.getElementById('form-user-create').addEventListener('submit', function(event) {
 
     event.preventDefault();
 
@@ -42,6 +40,8 @@ document.getElementById('form-user-create').addEventListener('submit', function 
 
     });
 
-    addLine(user);
+    var objectUser = new User(user.name, user.gender, user.birth, user.country, user.email, user.password, user.photo, user.admin);
+
+    addLine(objectUser);
 
 });
